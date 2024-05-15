@@ -1,11 +1,8 @@
 import Link from "next/link"
-import { invoke } from "./blitz-server"
-import { LogoutButton } from "./(auth)/components/LogoutButton"
 import styles from "./styles/Home.module.css"
-import getCurrentUser from "./users/queries/getCurrentUser"
+import { User } from "./components/User"
 
 export default async function Home() {
-  const currentUser = await invoke(getCurrentUser, null)
   return (
     <>
       <div className={styles.globe} />
@@ -31,27 +28,7 @@ export default async function Home() {
 
               {/* Auth */}
 
-              <div className={styles.buttonContainer}>
-                {currentUser ? (
-                  <>
-                    <LogoutButton />
-                    <div>
-                      User id: <code>{currentUser.id}</code>
-                      <br />
-                      User role: <code>{currentUser.role}</code>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <Link href="/signup" className={styles.button}>
-                      <strong>Sign Up</strong>
-                    </Link>
-                    <Link href="/login" className={styles.loginButton}>
-                      <strong>Login</strong>
-                    </Link>
-                  </>
-                )}
-              </div>
+              <User/>
             </div>
 
             <div className={styles.body}>
