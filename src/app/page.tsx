@@ -27,8 +27,6 @@ export default async function Home() {
               <h1>Your database & authentication is ready. Try it by signing up.</h1>
 
               {/* Auth */}
-
-              <User/>
             </div>
 
             <div className={styles.body}>
